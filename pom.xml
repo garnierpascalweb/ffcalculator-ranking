@@ -9,12 +9,11 @@
 	<properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
     </properties>
 	<name>ranking</name>
 	<description>Java - Generation des classements depuis un nuage de points</description>
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
+	
 	<dependencies>
 		<dependency>
     <groupId>org.testng</groupId>
