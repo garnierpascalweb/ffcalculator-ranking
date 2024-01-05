@@ -7,7 +7,6 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -17,7 +16,7 @@ import org.apache.log4j.Logger;
 
 public class FFCalculatorRanking {
 	private static final Logger logger = Logger.getLogger(FFCalculatorRanking.class.getName());
-
+	private static final int MAX_CLASS = 10000;
 	public FFCalculatorRanking() {
 		
 	}
@@ -28,7 +27,7 @@ public class FFCalculatorRanking {
 		String resourceToRead = null;
 		String resourceToWrite= null;
 		FileWriter fw = null;
-		double[] pts = new double[10000];
+		double[] pts = new double[MAX_CLASS];
 		List<Double> listPts = null;
 		DecimalFormatSymbols decimalFormatSymbols = DecimalFormatSymbols.getInstance();
 		decimalFormatSymbols.setDecimalSeparator('.');
@@ -73,11 +72,13 @@ public class FFCalculatorRanking {
 			logger.info("<" + resourceToRead + "> - fin du parcours des lignes de la ressource");
 			logger.info("passage en reverse de la liste");	
 			String arrPrint = listPts.stream()	
-					.sorted(Collections.reverseOrder())
+					//.sorted(Collections.reverseOrder())
 					.map(number -> df.format(number).toString())					
 					.collect(Collectors.joining(","));
-			logger.info("fin de passage en reverse de la liste");	
-			logger.info("ecriture du fichier resultat dans dist");
+			logger.info("fin de passage en reverse de la liste");
+			//TODO verifier que la liste est bien triée
+			//logger.info("elle est triée ? " + listPts.stream().sorted().collect(Collectors.toList()).equals(Collections.reverseOrder()));
+			logger.info("ecriture du fichier resultat dans dist - <" + listPts.size() + "> classés pour <" + effc.name() + ">");
 			resourceToWrite = "./dist/"+effc.name();
 			fw = new FileWriter(resourceToWrite);
 			fw.append(arrPrint);
@@ -96,8 +97,8 @@ public class FFCalculatorRanking {
 				}
 			if (sc != null)
 				sc.close();
-			logger.info("8 il a " + pts[8-1]);
-			logger.info("1386 il a " + pts[1386-1]);
+			logger.info("le 8eme il a " + listPts.get(8-1));
+			logger.info("le 1386 il a " + listPts.get(1386-1));
 		}
 	}
 }

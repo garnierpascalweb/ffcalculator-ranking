@@ -17,7 +17,8 @@ public class FFCalculatorRankingMain {
 	public static void main(String args[]) {
 		FFCalculatorRankingMain main = new FFCalculatorRankingMain();
 		main.setup();
-		main.test();
+		main.u17();
+		main.all();
 	}
 	
 	public void setup() {
@@ -41,12 +42,25 @@ public class FFCalculatorRankingMain {
 		}
 	}
 	
-	public void test() {
+	public void u17() {
 		//logger.info("ceci est un test");
 		FFCalculatorRanking ranking = null;
 		try {
 			ranking = new FFCalculatorRanking();
 			ranking.generate(EFFCalculatorRanking.U17);			
+		} catch (IOException e) {
+			logger.error("probleme ", e);
+		} finally {
+			
+		}
+	}
+	
+	public void all() {
+		//logger.info("ceci est un test");
+		FFCalculatorRanking ranking = null;
+		try {
+			ranking = new FFCalculatorRanking();
+			ranking.generate(EFFCalculatorRanking.ALL);			
 		} catch (IOException e) {
 			logger.error("probleme ", e);
 		} finally {

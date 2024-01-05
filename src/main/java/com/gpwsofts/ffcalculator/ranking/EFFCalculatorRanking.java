@@ -6,7 +6,7 @@ package com.gpwsofts.ffcalculator.ranking;
  */
 public enum EFFCalculatorRanking {
 	U17("nuage-u17.csv"),
-	U19("nuage-u19.csv"),
+	//U19("nuage-u19.csv"), le classement national U19 na pas lieu d'etre
 	ALL("nuage-all.csv");
 	
 	public final String resource;
